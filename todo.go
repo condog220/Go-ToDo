@@ -2,24 +2,25 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
 type Task struct {
-	task         string
-	completed    bool
-	created_at   time.Time
-	completed_at *time.Time
+	Task        string     `json:"task"`
+	Completed   bool       `json:"completed"`
+	CreatedAt   time.Time  `json:"created_at"`
+	CompletedAt *time.Time `json:"completed_at,omitempty"`
 }
 
 type tasks []Task
 
 func (toDos *tasks) add(task string) {
 	todo := Task{
-		task:         task,
-		completed:    false,
-		created_at:   time.Now(),
-		completed_at: nil,
+		Task:        strings.TrimSpace(task),
+		Completed:   false,
+		CreatedAt:   time.Now(),
+		CompletedAt: nil,
 	}
 	*toDos = append(*toDos, todo)
 }
@@ -29,22 +30,27 @@ func (toDos *tasks) remove(index int) {
 }
 
 func (toDos *tasks) update(index int, task string) {
-	(*toDos)[index].task = task
+	(*toDos)[index].Task = task
 }
 
 func (toDos *tasks) markCompleted(index int) {
-	(*toDos)[index].completed = true
+	(*toDos)[index].Completed = true
 	completedTime := time.Now()
-	(*toDos)[index].completed_at = &completedTime
+	(*toDos)[index].CompletedAt = &completedTime
 }
 
 func (toDos *tasks) list() []Task {
 	for index, task := range *toDos {
-		fmt.Printf("Task %d:\n", index+1)
-		fmt.Println(task.task)
-		fmt.Println(task.created_at.Format(time.RFC1123))
-		fmt.Println(task.completed)
-		fmt.Println(task.completed_at)
+		fmt.Println("Task", index+1)
+		fmt.Println(task.Task)
+		fmt.Println(task.Completed)
+		fmt.Println(task.CreatedAt.Format(time.RFC1123))
+		if task.CompletedAt != nil {
+			fmt.Println(task.CompletedAt.Format(time.RFC1123))
+		} else {
+			fmt.Println("Not completed yet")
+		}
+		fmt.Println("-------------------")
 	}
 	return *toDos
 }
