@@ -1,6 +1,8 @@
 # Go ToDo CLI
 
-A simple command-line ToDo list application written in Go. This tool allows you to manage your daily tasks efficiently
+<p>A simple command-line ToDo list application written in Go. This tool allows you to manage your daily tasks efficiently</p>
+
+Made for Task Tracker CLI on [roadmap.sh](https://roadmap.sh/projects/task-tracker)
 
 ## Features
 
@@ -15,9 +17,9 @@ A simple command-line ToDo list application written in Go. This tool allows you 
 
 ## Project Structure
 
-- [main.go](cci:7://file:///d:/Go/ToDo/main.go:0:0-0:0): The entry point of the application. Handles the CLI menu and user input.
-- [todo.go](cci:7://file:///d:/Go/ToDo/todo.go:0:0-0:0): Defines the [Task](cci:2://file:///d:/Go/ToDo/todo.go:8:0-13:1) structure and core logic (add, remove, update, etc.).
-- [json.go](cci:7://file:///d:/Go/ToDo/json.go:0:0-0:0): Handles saving and loading tasks to/from JSON files.
+- main.go: The entry point of the application. Handles the CLI menu and user input.
+- todo.go: Defines the [Task](cci:2://file:///d:/Go/ToDo/todo.go:8:0-13:1) structure and core logic (add, remove, update, etc.).
+- json.go: Handles saving and loading tasks to/from JSON files.
 
 ## Getting Started
 
